@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a href="#home" class="navbar-brand">John Doe</a>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <div id="home" class="container">
+    <h1>Welcome!</h1>
+    <p>I'm John Doe, a Web Developer.</p>
+    <a href="#projects">View My Work</a>
+  </div>
+
+  <div id="services" class="services">
+    <h2>My Services</h2>
+    <div class="service-card">
+      <h3>Web Development</h3>
+      <p>Building modern and responsive websites.</p>
+    </div>
+    <div class="service-card">
+      <h3>UI/UX Design</h3>
+      <p>Crafting intuitive and user-friendly interfaces.</p>
+    </div>
+    <div class="service-card">
+      <h3>API Integration</h3>
+      <p>Connecting applications with robust APIs.</p>
+    </div>
+  </div>
+
+  <h2 style="align-items: center;">My Projects</h2>
+
+  <div id="projects" class="projects">
+    <div class="project-card">
+      <div class="project-card-inner">
+        <div class="project-card-front">
+          <h2>Project 1</h2>
+          <p>Front Side</p>
+        </div>
+        <div class="project-card-back">
+          <h2>Project 1</h2>
+          <p>Back Side - Details</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-inner">
+        <div class="project-card-front">
+          <h2>Project 2</h2>
+          <p>Front Side</p>
+        </div>
+        <div class="project-card-back">
+          <h2>Project 2</h2>
+          <p>Back Side - Details</p>
+        </div>
+      </div>
+    </div>
+    <div class="project-card">
+      <div class="project-card-inner">
+        <div class="project-card-front">
+          <h2>Project 3</h2>
+          <p>Front Side</p>
+        </div>
+        <div class="project-card-back">
+          <h2>Project 3</h2>
+          <p>Back Side - Details</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="contact" class="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Created By IMDevArt. All rights reserved.</p>
+   
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    let lastScrollPosition = 0;
+
+    window.addEventListener('scroll', () => {
+      const currentScrollPosition = window.scrollY;
+
+      if (currentScrollPosition > 100) {
+        if (currentScrollPosition > lastScrollPosition) {
+          // Scrolling down
+          navbar.classList.remove('show');
+        } else {
+          // Scrolling up
+          navbar.classList.add('show');
+        }
+      } else {
+        // At the top of the page
+        navbar.classList.add('show');
+      }
+
+      lastScrollPosition = currentScrollPosition;
+
+      // Activate cards on scroll
+      const cards = document.querySelectorAll('.service-card, .project-card');
+      cards.forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top <= window.innerHeight * 0.8 && rect.bottom >= 0) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
